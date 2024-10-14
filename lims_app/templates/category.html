@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% extends "index.html" %}
+{% load static %}
+
+{% block main_content %}
+<div class="product-grid">
+  {% for book in books %}
+    <div class="product-box">
+      <img src="{{ book.image.url }}" alt="{{ book.name }}">
+      <h3>{{ book.name }}</h3>
+      <p>Price: ${{ book.price }}</p>
+
+      <form method="post" action="{% url 'add_to_cart' book.id %}">
+        {% csrf_token %}
+        <label for="quantity-{{ book.id }}" style="display: block; margin-bottom: 10px;">Quantity:</label>
+        <input type="number" id="quantity-{{ book.id }}" name="quantity" min="1" value="1" style="width: 60px; margin-bottom: 10px;" />
+        <button type="submit" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer; border-radius: 5px;">Add to Cart</button>
+      </form>
+    </div>
+  {% endfor %}
+</div>
+
+
+<style>
+  .product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 30px auto;
+    padding: 0 15px;
+  }
+
+  .product-box {
+    flex: 1 1 calc(33.333% - 40px);
+    max-width: calc(33.333% - 40px);
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    text-align: center;
+  }
+
+  .product-box img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+
+  @media (max-width: 768px) {
+    .product-box {
+      flex: 1 1 calc(50% - 30px);
+      max-width: calc(50% - 30px);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .product-box {
+      flex: 1 1 100%;
+      max-width: 100%;
+    }
+
+    .product-grid {
+      gap: 15px;
+    }
+  }
+</style>
+{% endblock %}

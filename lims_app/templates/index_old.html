@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+</head>
+<body>
+    <h1>Welcome to the Library Management System</h1>
+    <form method="POST" action="/save">
+        {% csrf_token %}
+        <label for="student_name">Student Name:</label>
+        <input type="text" id="student_name" name="student_name" required>
+        <button type="submit">Save</button>
+    </form>
+    <nav>
+        <a href="/shopping">Shopping</a>
+    </nav>
+</body>
+</html>

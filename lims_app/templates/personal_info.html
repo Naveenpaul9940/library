@@ -1,0 +1,13 @@
+<h2>Personal Information</h2>
+<form method="post">
+    {% csrf_token %}
+    <p>Name: {{ reader.name }}</p>
+    <p>Contact: {{ reader.contact_no }}</p>
+    <p>Address: {{ reader.address }}</p>
+
+    <h3>Select Payment Method</h3>
+    <label><input type="radio" name="payment_method" value="credit_card"> Credit Card</label><br>
+    <label><input type="radio" name="payment_method" value="paypal"> PayPal</label><br>
+
+    <button type="submit">Proceed to Payment</button>
+</form>
