@@ -12,7 +12,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
-import django_heroku
+
+from django.conf.global_settings import STATIC_ROOT
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,14 +27,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'OLKYg0qvYTch2wagyFBcNJIlzZinrEKR9672E53LsJvS2ROgHpq0_4qSgy76rUvD8sw'
-
+SECRET_KEY = 'django-insecure-nkyx2+4snf-$w*uaaz(_!t^n%#mdakgiby@6(jm7kcamfq33oc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['lims_portal.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -124,16 +123,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'lims_app/static')]
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 
 
-MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
+
 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-django_heroku.settings(locals())
