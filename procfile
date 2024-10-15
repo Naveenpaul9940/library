@@ -1,1 +1,1 @@
-web : gunicorn lims_portal.wsgi
+web: gunicorn lims_portal.wsgi --log-file -
