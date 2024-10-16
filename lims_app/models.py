@@ -15,7 +15,7 @@ class Reader(models.Model):
 
 
 class Book(models.Model):
-    image = models.ImageField(upload_to='products/')
+    image = models.ImageField(upload_to='products/', default='products/default_image.jpg')
     name = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=10, decimal_places=2)
 
