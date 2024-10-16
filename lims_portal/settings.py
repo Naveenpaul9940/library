@@ -81,11 +81,11 @@ WSGI_APPLICATION = 'lims_portal.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'naveen9840',
-        'USER': 'root',
-        'PASSWORD': 'naveen9840',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'NAME': 'naveen9840',          # Your database name
+        'USER': 'naveen1234',          # Your database username
+        'PASSWORD': 'naveen9840',      # Your database password
+        'HOST': 'localhost',            # Your database host
+        'PORT': '3306',                 # Your database port (default for MySQL)
     }
 }
 
